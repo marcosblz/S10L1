@@ -1,3 +1,4 @@
+from sqlalchemy import inspect
 from app import create_app, db
 from app.models import Data
 
@@ -7,8 +8,11 @@ app = create_app('development')
 # Función para borrar todos los datos de la tabla si existen
 def delete_existing_data():
     with app.app_context():
-        # Verifica si la tabla existe en la base de datos
-        if db.engine.has_table(Data.__tablename__):
+        inspector = inspect(db.engine)
+        # Obtiene todas las tablas en la base de datos
+        tables = inspector.get_table_names()
+        # Verifica si la tabla existe en la lista de tablas
+        if Data.__tablename__ in tables:
             # Elimina todos los datos de la tabla
             Data.query.delete()
             # Guarda los cambios en la base de datos

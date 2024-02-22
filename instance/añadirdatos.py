@@ -12,22 +12,10 @@ def create_table():
         db.create_all()
 
 
-# Función para borrar todos los datos de la tabla si existen
-def delete_existing_data():
-    with app.app_context():
-        # Verifica si la tabla existe en la base de datos
-        if db.engine.has_table(Data.__tablename__):
-            # Elimina todos los datos de la tabla
-            Data.query.delete()
-            # Guarda los cambios en la base de datos
-            db.session.commit()
-
-
 # Función para insertar datos de ejemplo en la tabla
 def insert_example_data():
-    # Borra todos los datos existentes en la tabla
-    delete_existing_data()
 
+    create_table()
     # Inserta datos de ejemplo
     with app.app_context():
         # Datos de ejemplo
@@ -50,4 +38,3 @@ if __name__ == "__main__":
     # Llama a la función para insertar datos de ejemplo
     insert_example_data()
     print("Tabla creada y datos de ejemplo insertados exitosamente.")
-
