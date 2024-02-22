@@ -22,4 +22,5 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Run pytest
-      run: pytest
+        run: |
+          pytest tests -k "test*"
