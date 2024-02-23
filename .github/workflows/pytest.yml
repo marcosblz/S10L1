@@ -20,7 +20,7 @@ jobs:
 
       - name: Set up PYTHONPATH
         run: |
-          $env:PYTHONPATH += ";${{ github.workspace }}/app"
+          echo 'export PYTHONPATH="${PYTHONPATH}:/home/runner/work/S10L1/S10L1/app"' >> $GITHUB_ENV
 
       - name: Run pytest
         run: pytest tests
