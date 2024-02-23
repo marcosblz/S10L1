@@ -16,7 +16,9 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          echo "::add-path::$GITHUB_WORKSPACE/app"  # Add 'app' directory to PYTHONPATH
 
       - name: Run pytest
-        run: pytest $(find . -name "test*.py")
+        run: pytest tests
