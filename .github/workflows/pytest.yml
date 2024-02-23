@@ -6,6 +6,9 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
 
+    env:
+      PYTHONPATH: ${{ github.workspace }}/app
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -16,9 +19,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          echo "::add-path::$GITHUB_WORKSPACE/app"  # Add 'app' directory to PYTHONPATH
+        run: pip install -r requirements.txt
 
       - name: Run pytest
         run: pytest tests
