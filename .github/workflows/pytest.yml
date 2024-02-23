@@ -16,9 +16,11 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Add app directory to PYTHONPATH
         run: |
-          pip install -r requirements.txt
-          $env:PYTHONPATH += ";${GITHUB_WORKSPACE}\app"
+          python -c "import sys; sys.path.append(r'${{ github.workspace }}\app')"
 
       - name: Run pytest
         run: pytest tests
