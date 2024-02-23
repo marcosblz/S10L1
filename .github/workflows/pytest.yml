@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   pytest:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -16,11 +16,9 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Set up PYTHONPATH
         run: |
-          echo 'export PYTHONPATH="${PYTHONPATH}:/home/runner/work/S10L1/S10L1/app"' >> $GITHUB_ENV
+          pip install -r requirements.txt
+          $env:PYTHONPATH += ";${GITHUB_WORKSPACE}\app"
 
       - name: Run pytest
         run: pytest tests
