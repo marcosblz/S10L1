@@ -6,9 +6,6 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
 
-    env:
-      PYTHONPATH: ${{ github.workspace }}/app
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -20,6 +17,10 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Set up PYTHONPATH
+        run: |
+          $env:PYTHONPATH += ";${{ github.workspace }}/app"
 
       - name: Run pytest
         run: pytest tests
