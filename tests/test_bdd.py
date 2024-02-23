@@ -1,6 +1,7 @@
 import pytest
-from app import create_app, db
 from app.models import Data
+from ..app import create_app, db
+
 
 
 # Fixture para configurar la aplicación antes de ejecutar las pruebas
