@@ -3,7 +3,8 @@ from app import create_app, db
 from app.models import Data
 
 # Crea una instancia de la aplicación Flask
-app = create_app('development')
+app = create_app("development")
+
 
 # Función para borrar todos los datos de la tabla si existen
 def delete_existing_data():
@@ -19,7 +20,9 @@ def delete_existing_data():
             db.session.commit()
             print("Se han eliminado todos los datos existentes en la tabla.")
         else:
-            print("La tabla no existe en la base de datos. No se realizó ninguna operación.")
+            print(
+                "La tabla no existe en la base de datos. No se realizó ninguna operación."
+            )
 
 
 if __name__ == "__main__":

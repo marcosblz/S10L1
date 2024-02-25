@@ -2,7 +2,7 @@ from app import create_app, db
 from app.models import Data
 
 # Crea una instancia de la aplicación Flask
-app = create_app('development')
+app = create_app("development")
 
 
 # Función para crear la tabla en la base de datos
@@ -22,7 +22,7 @@ def insert_example_data():
         example_data = [
             {"name": "Ejemplo 1"},
             {"name": "Ejemplo 2"},
-            {"name": "Ejemplo 3"}
+            {"name": "Ejemplo 3"},
         ]
 
         # Inserta cada dato en la base de datos

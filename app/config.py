@@ -6,7 +6,9 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY", "your_secret_key")
 
     # Database configuration
-    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI", "sqlite:///database.db")
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        "SQLALCHEMY_DATABASE_URI", "sqlite:///database.db"
+    )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Add other configuration variables as needed
@@ -20,15 +22,17 @@ class ProductionConfig(Config):
     DEBUG = False
     # Add other production configurations here
 
+
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI", "sqlite:///database.db")
-
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        "SQLALCHEMY_DATABASE_URI", "sqlite:///database.db"
+    )
 
 
 # Dictionary to map environment names to configuration classes
 config_dict = {
     "development": DevelopmentConfig,
     "production": ProductionConfig,
-    "testing": TestingConfig
+    "testing": TestingConfig,
 }
