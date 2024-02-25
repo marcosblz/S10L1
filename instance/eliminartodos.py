@@ -21,7 +21,7 @@ def delete_existing_data():
             print("Se han eliminado todos los datos existentes en la tabla.")
         else:
             print(
-                "La tabla no existe en la base de datos. No se realizó ninguna operación."
+                "No se realizó ninguna operación."
             )
 
 
