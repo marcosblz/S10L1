@@ -24,3 +24,10 @@ jobs:
 
       - name: Run pytest
         run: pytest tests
+
+      - name: Run tests with coverage
+        run: |
+          coverage run -m pytest
+
+      - name: Generate coverage report
+        run: coverage report -m
